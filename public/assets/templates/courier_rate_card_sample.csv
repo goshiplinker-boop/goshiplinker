@@ -1,0 +1,5 @@
+Courier ID,Zone Name,Weight Slab(Kg),Base Freight Forward(₹),Additional Freight(₹),RTO Freight(₹),COD Charge(₹),COD Percentage,Delivery SLA,COD Allowed,Sorting
+1,A,0.1,10,9,10,30,2,0-1,Y,1
+2,A,0.25,20,19,20,31,1,0-1,N,2
+3,A,0.1,10,9,10,30,2,0-1,Y,3
+4,A,0.1,11,10,15,31,1,0-1,N,4

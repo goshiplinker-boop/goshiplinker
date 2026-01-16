@@ -1,0 +1,11 @@
+PINCODES,CITY,STATE,ROUTE_CODE,FORWARD_PICKUP,FORWARD_DELIVERY,REVERSE_PICKUP,COD,PREPAID,STATUS
+110001,New Delhi,Delhi,DL-ND,1,1,0,1,1,1
+302012,Jaipur,Rajasthan,RJ-JPR,1,1,1,1,1,1
+400001,Mumbai,Maharashtra,MH-MUM,1,1,0,1,1,1
+560001,Bengaluru,Karnataka,KA-BLR,1,1,1,0,1,1
+600001,Chennai,Tamil Nadu,TN-CHN,1,1,1,1,0,1
+700001,Kolkata,West Bengal,WB-KOL,0,1,0,1,1,1
+380001,Ahmedabad,Gujarat,GJ-AHD,1,0,0,1,1,1
+500001,Hyderabad,Telangana,TS-HYD,1,1,1,0,0,1
+641001,Coimbatore,Tamil Nadu,TN-CBE,1,1,0,1,1,1
+682001,Kochi,Kerala,KL-KOC,0,1,0,1,0,1
