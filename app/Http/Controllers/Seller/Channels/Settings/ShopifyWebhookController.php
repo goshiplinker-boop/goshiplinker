@@ -10,6 +10,7 @@ use App\Models\OrderWebhook;
 use App\Jobs\ShopifyOrderSyncJob;
 use App\Services\ShopifyGraphQLService;
 use Illuminate\Support\Facades\Session;
+use App\Jobs\CancelShopifyOrderJob;
 class ShopifyWebhookController extends Controller
 {
     protected $shopifyGraphQLService;
@@ -74,6 +75,7 @@ class ShopifyWebhookController extends Controller
                 
                 // Inserting the record
                 $orderWebhook = OrderWebhook::create($data);
+                CancelShopifyOrderJob::dispatch($data);
                 break;   
             case 'ordersfulfilled':
                 $data = [
