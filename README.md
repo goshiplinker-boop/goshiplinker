@@ -65,20 +65,20 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-# Parcelmind Documentation
+# Shiplinker Documentation
 ## Introduction
-Parcelmind is a full-featured, Laravel-based e-commerce system that empowers users to sell, manage, and track their products through a smart and easy-to-use control panel.
+Shiplinker is a full-featured, Laravel-based e-commerce system that empowers users to sell, manage, and track their products through a smart and easy-to-use control panel.
 This platform provides a complete solution for businesses or individuals who want to:
 - Create and manage product orders
 - Track order status in real-time
 - Organize and monitor their sales activity
 
-Whether you're running an e-commerce business or managing orders for clients, Parcelmind simplifies the process and offers a smooth user experience through an easy-to-use panel.
+Whether you're running an e-commerce business or managing orders for clients, Shiplinker simplifies the process and offers a smooth user experience through an easy-to-use panel.
 
-Parcelmind empowers users to grow their business with minimal effort by handling the core aspects of order creation, tracking, and sales reporting — all from one place.
+Shiplinker empowers users to grow their business with minimal effort by handling the core aspects of order creation, tracking, and sales reporting — all from one place.
 ## Installation Guide
 
-This guide will help you set up and run the Parcelmind Laravel-based e-commerce system on your local machine or server.
+This guide will help you set up and run the Shiplinker Laravel-based e-commerce system on your local machine or server.
 ##  Requirements
 
 ### Before starting, make sure you have the following installed:
@@ -88,7 +88,7 @@ This guide will help you set up and run the Parcelmind Laravel-based e-commerce 
 - A web server (Apache) or Laravel's built-in server
 ###  Git Repository Clone Guide
 
-This section explains how to clone the Parcelmind repository from GitHub to your local machine.
+This section explains how to clone the Shiplinker repository from GitHub to your local machine.
 
 ###  Steps to Clone the Repository
 
@@ -108,9 +108,9 @@ Access to the Git repository is managed and provided by the company.
 
 ###  Clone the Repository
 
-Run the following command in the terminal/command prompt to clone the Parcelmind repository:
+Run the following command in the terminal/command prompt to clone the Shiplinker repository:
 
-- git clone https://github.com/Parcelmind/pos.git
+- git clone https://github.com/Shiplinker/pos.git
 
 - Navigate to the Project Folder
 ### Verify Cloning Success
@@ -127,7 +127,7 @@ It means your repo is successfully cloned.
 
 ###  You're Done!
 
-The Parcelmind project is now available on your local system. You can open it in your editor and continue working or running the project..
+The Shiplinker project is now available on your local system. You can open it in your editor and continue working or running the project..
 
 ### Update Composer Dependencies
 
@@ -150,7 +150,7 @@ Follow these steps to configure your database, run migrations, and seed data.
    [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
 2. Click on Databases tab.
 3. Create a new database.  
-   Example name: Parcelmind_db
+   Example name: Shiplinker_db
 
    ---
    ### ✅  Configure .env File
@@ -160,7 +160,7 @@ Open the .env file in your project root and update the database settings:
 - DB_CONNECTION=mysql
 - DB_HOST=127.0.0.1
 - DB_PORT=3306
-- DB_DATABASE=Parcelmind_db
+- DB_DATABASE=Shiplinker_db
 - DB_USERNAME=root
 - DB_PASSWORD=
 
@@ -168,7 +168,7 @@ Open the .env file in your project root and update the database settings:
 
    ### 🧱 Create Tables Using Laravel Migrations
 
-Parcelmind uses Laravel's migration system to create all database tables.
+Shiplinker uses Laravel's migration system to create all database tables.
 
 ### ✅ Step: Run Migrations
 
@@ -209,7 +209,7 @@ Run the following commands one by one to seed important default data into your d
  
  ---
 
-### ✅ Your database now contains all required  data to start using the Parcelmind system.
+### ✅ Your database now contains all required  data to start using the Shiplinker system.
 
 Next step: Run the application using php artisan serve
 

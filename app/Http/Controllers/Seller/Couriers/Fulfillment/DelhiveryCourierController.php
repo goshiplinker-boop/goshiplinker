@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use App\Services\ShippingRateService;
 use App\Services\SellerWalletService;
 use Carbon\Carbon;
+use App\Services\OrderShipmentService;
 class DelhiveryCourierController extends Controller
 {
     private $order_ids 		= array();
@@ -94,6 +95,7 @@ class DelhiveryCourierController extends Controller
                 $this->parent_company_id,
                 $this->company_id,
                 $this->courier_id,
+                $this->parent_courier_id,
                 $this->pickup_address->zipcode,
                 $order_info['s_zipcode'] ?: $order_info['b_zipcode'],
                 $weight,
@@ -527,21 +529,17 @@ class DelhiveryCourierController extends Controller
                         $status = $responseBody['status']??false;
                         $ReturnMessage = $responseBody['detail']??'';
                         if($status===true){
-                            DB::transaction(function () use ($orderId, $shipmentInfo) {
-                                app(SellerWalletService::class)->revertFreight([
-                                    'company_id'      => $shipmentInfo->company_id,
-                                    'shipment_id'     => $shipmentInfo->id,
-                                    'tracking_number' => $shipmentInfo->tracking_id,
-                                ]);
-                                ShipmentInfo::where('order_id', $orderId)->delete();
-                                Order::where('id', $orderId)->update(['status_code' => 'N']);
-                            });
-                            // DB::transaction(function () use ($orderId) {
-                            // ShipmentInfo::where('order_id', $orderId)->delete();
-                            // Order::where('id', $orderId)->update([
-                            //         'status_code' => 'N'
+                            app(OrderShipmentService::class)->cancelOrderById($orderId);
+                            // DB::transaction(function () use ($orderId, $shipmentInfo) {
+                            //     app(SellerWalletService::class)->revertFreight([
+                            //         'company_id'      => $shipmentInfo->company_id,
+                            //         'shipment_id'     => $shipmentInfo->id,
+                            //         'tracking_number' => $shipmentInfo->tracking_id,
                             //     ]);
+                            //     ShipmentInfo::where('order_id', $orderId)->delete();
+                            //     Order::where('id', $orderId)->update(['status_code' => 'N']);
                             // });
+                            
                             $this->result['success'][] = $orderId .' is canceled successfully';
                         }else{
                             if (!empty($ReturnMessage)) {

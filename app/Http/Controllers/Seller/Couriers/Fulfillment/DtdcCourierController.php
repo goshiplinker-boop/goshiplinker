@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Services\ShippingRateService;
 use App\Services\SellerWalletService;
 use Carbon\Carbon;
+use App\Services\OrderShipmentService;
 class DtdcCourierController extends Controller
 {
     private $order_ids 		= array();
@@ -103,6 +104,7 @@ class DtdcCourierController extends Controller
                 $this->parent_company_id,
                 $this->company_id,
                 $this->courier_id,
+                $this->parent_courier_id,
                 $this->pickup_address->zipcode,
                 $consignee_phone,
                 $weight,
@@ -473,26 +475,21 @@ class DtdcCourierController extends Controller
 
                 $data = $response->json();
                 if (!empty($data['successConsignments'])) {
-                    DB::transaction(function () use ($order) {
-                        $shipmentInfo = $order->shipmentInfo;
-                        if ($shipmentInfo) {
-                            app(SellerWalletService::class)->revertFreight([
-                                'company_id'      => $shipmentInfo->company_id,
-                                'shipment_id'     => $shipmentInfo->id,
-                                'tracking_number' => $shipmentInfo->tracking_id,
-                            ]);
-                        }
-                        ShipmentInfo::where('order_id', $order->id)->delete();
-                        OrderCourierResponse::where('order_id', $order->id)->delete();
-                        Order::where('id', $order->id)->update([
-                            'status_code' => 'N'
-                        ]);
-                    });
-                    
+                    app(OrderShipmentService::class)->cancelOrderById($order->id);
                     // DB::transaction(function () use ($order) {
+                    //     $shipmentInfo = $order->shipmentInfo;
+                    //     if ($shipmentInfo) {
+                    //         app(SellerWalletService::class)->revertFreight([
+                    //             'company_id'      => $shipmentInfo->company_id,
+                    //             'shipment_id'     => $shipmentInfo->id,
+                    //             'tracking_number' => $shipmentInfo->tracking_id,
+                    //         ]);
+                    //     }
                     //     ShipmentInfo::where('order_id', $order->id)->delete();
                     //     OrderCourierResponse::where('order_id', $order->id)->delete();
-                    //     $order->update(['status_code' => 'N']);
+                    //     Order::where('id', $order->id)->update([
+                    //         'status_code' => 'N'
+                    //     ]);
                     // });
                     $successfulOrders[] = $order->vendor_order_number ?? $order->id;
                 }

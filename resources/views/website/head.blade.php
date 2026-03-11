@@ -35,6 +35,7 @@
   <link rel="canonical" href="{{ route('welcome') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  @verbatim
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,6 +65,8 @@
     ]
   }
   </script>
+  @endverbatim
+
 </head>
 <body>
   <!-- Navigation -->

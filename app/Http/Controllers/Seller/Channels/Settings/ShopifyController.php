@@ -305,6 +305,7 @@ class ShopifyController extends Controller
         //     'APP_SUBSCRIPTIONS_UPDATE'
         // ];
         $topics = [
+            'ORDERS_CANCELLED',
             'APP_UNINSTALLED',
             'APP_SUBSCRIPTIONS_UPDATE'
         ];
