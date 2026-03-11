@@ -33,13 +33,16 @@ class DelhiveryCourierController extends Controller
     public $action="";
     public $print_response=array();
     public $shipment_mode='';
-    public $parent_courier_id=3;
+    private int $parent_company_id;
+    private int $parent_courier_id;
     public function __construct($order_ids = array() , $courier_id = 0 , $company_id = 0,$courier_settings=array()){
 		
 		$this->order_ids 	= $order_ids;
 		$this->courier_id 	= $courier_id;
 		$this->company_id 	= ($company_id) ? $company_id : session('company_id');
         $this->courier_settings = $courier_settings;
+        $this->parent_company_id = $courier_settings['company_id'] ?? 0;
+        $this->parent_courier_id = 3;
         $courier_details = ($courier_settings->courier_details)?json_decode($courier_settings['courier_details'],true):array();
         $this->token = $courier_details['api_token']??'';
         $this->shipment_mode = $courier_details['shipment_mode']??'';
