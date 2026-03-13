@@ -21,7 +21,7 @@ class CourierWeightImport implements ToCollection, WithHeadingRow
             DB::transaction(function () use ($row) {
 
                 $trackingNumber = trim($row['tracking_number'] ?? '');
-                $courierWeight  = (float) ($row['courier_weightkg'] ?? 0);
+                $courierWeight  = (float) ($row['courier_weight_kg'] ?? 0);
                 $length  = (float) ($row['length_cm'] ?? '');
                 $breadth  = (float) ($row['breadth_cm'] ?? '');
                 $height  = (float) ($row['height_cm'] ?? '');
