@@ -586,25 +586,10 @@ class EkartCourierController extends Controller
                             $response_item['status_code'] == 200
                         ) {
                             $order_id = $orderMap[$tracking_id];
-                            app(OrderShipmentService::class)->cancelOrderById($order->id);
-                            // DB::transaction(function () use ($order) {
-
-                            //     $shipmentInfo = $order->shipmentInfo;
-
-                            //     if ($shipmentInfo) {
-                            //         app(SellerWalletService::class)->revertFreight([
-                            //             'company_id'      => $shipmentInfo->company_id,
-                            //             'shipment_id'     => $shipmentInfo->id,
-                            //             'tracking_number' => $shipmentInfo->tracking_id,
-                            //         ]);
-                            //     }
-
-                            //     ShipmentInfo::where('order_id', $order->id)->delete();
-
-                            //     Order::where('id', $order->id)->update([
-                            //         'status_code' => 'N'
-                            //     ]);
-                            // });
+                            if (!$order_id) continue;
+                            
+                            app(OrderShipmentService::class)->cancelOrderById($order_id);
+                            
 
                         } else {
                             $this->result['error'][] = "Cancel failed for Order ID {$orderMap[$tracking_id]}";
