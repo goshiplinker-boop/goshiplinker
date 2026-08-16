@@ -177,8 +177,8 @@
                                     <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip"
                                        data-bs-placement="top" title="Top endorsed"></i>
                                     </span>
-                                    <span class="d-block fs-5 text-body">{{ $vendor->phone_number }}</span>
-                                    <span class="d-block fs-5 text-body">{{ $vendor->user->email }}</span>
+                                    <!-- <span class="d-block fs-5 text-body">{{ $vendor->phone_number }}</span>
+                                    <span class="d-block fs-5 text-body">{{ $vendor->user->email }}</span> -->
                                     <span class="d-block fs-5 text-body">{{ $vendor->user->brand_name }}</span>
                                     <span class="d-block fs-5 text-body">{{ \Carbon\Carbon::parse($vendor->created_at)->format('d-m-Y H:i:s') }}</span>
                                     @php
