@@ -27,4 +27,6 @@ return [
 
     'shipshopy' =>
         \App\Http\Controllers\Seller\Couriers\Settings\ShipshopyController::class,
+    'shadowfax' =>
+        \App\Http\Controllers\Seller\Couriers\Settings\ShadowfaxController::class,
 ];
