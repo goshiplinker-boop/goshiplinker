@@ -142,6 +142,16 @@ class CouriersTableSeeder extends Seeder
                 'status' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'id' => 14,
+                'name' => 'Shadowfax',
+                'parent_id' => null,
+                'company_id' => 0,
+                'image_url' => 'images/couriers/shadowfax.png',
+                'status' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
             
         ]);
