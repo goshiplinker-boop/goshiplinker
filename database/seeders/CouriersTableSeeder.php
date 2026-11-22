@@ -152,6 +152,16 @@ class CouriersTableSeeder extends Seeder
                 'status' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'id' => 15,
+                'name' => 'Shipdelight',
+                'parent_id' => null,
+                'company_id' => 0,
+                'image_url' => 'images/couriers/shipdelight.png',
+                'status' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
             
         ]);
