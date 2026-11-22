@@ -428,4 +428,21 @@ class ShadowfaxCourierController extends Controller
         }
         return $this->result;
     }
+    public function pickupAddressFormat($pickup_address){
+        $pick_address = $pickup_address->address;
+        if($pickup_address->landmark){
+            $pick_address .= ', '.$pickup_address->landmark;
+        }
+        if($pickup_address->city){
+            $pick_address .= ', '.$pickup_address->city;
+        }
+        if($pickup_address->state_code){
+            $pick_address .= ', '.$pickup_address->state_code;
+        }
+        if($pickup_address->zipcode){
+            $pick_address .= ', '.$pickup_address->zipcode;
+        } 
+        return $pick_address;
+
+    }
 }
