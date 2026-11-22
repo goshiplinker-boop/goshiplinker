@@ -60,7 +60,7 @@ class ShippingRateService
         $total = $slab->base_freight_forward;
         // Step 5: Additional freight if weight above slab
         if ($chargeableWeight > $slab->weight_slab_kg) {
-            $extra = ceil($chargeableWeight - $slab->weight_slab_kg);
+            $extra = ceil(($chargeableWeight - $slab->weight_slab_kg)/$slab->weight_slab_kg);
             $total += $extra * $slab->additional_freight;
         }
 
@@ -73,6 +73,11 @@ class ShippingRateService
             
         }
         $delivery_sla = $slab->delivery_sla??'';
+        if($total>0){
+           $total += $total*0.18;
+
+        }
+        
         return [
             'rate_card_id' => $slab->id,
             'chargeable_weight' => $chargeableWeight,
