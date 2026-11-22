@@ -8,30 +8,30 @@ class ZoneResolverService
 {
     // Metro Cities
     protected $metroCities = [
-        'Delhi', 'New Delhi',
-        'Mumbai', 'Bombay',
-        'Kolkata','Calcutta',
-        'Chennai',
-        'Hyderabad',
-        'Bengaluru', 'Bangalore'
+        'delhi', 'new delhi',
+        'mumbai', 'bombay',
+        'kolkata','calcutta',
+        'chennai',
+        'hyderabad',
+        'bengaluru', 'bangalore'
     ];
 
     // Special Zone States (Zone E)
     protected $specialStates = [
-        'Arunachal Pradesh',
-        'Assam',
-        'Manipur',
-        'Meghalaya',
-        'Mizoram',
-        'Nagaland',
-        'Tripura',
-        'Jammu and Kashmir',
-        'Kerala'
+        'arunachal pradesh',
+        'assam',
+        'manipur',
+        'meghalaya',
+        'mizoram',
+        'nagaland',
+        'tripura',
+        'jammu and kashmir',
+        'kerala'
     ];
 
     // Remote Islands (Zone F)
     protected $remoteZones = [
-        'Andaman and Nicobar Islands'
+        'andaman and nicobar islands'
     ];
 
     /**
@@ -47,35 +47,35 @@ class ZoneResolverService
         }
 
         // -------- Zone A → Same City --------
-        if ($origin->city === $dest->city) {
+        if (strtolower($origin->city) === strtolower($dest->city)) {
             return 'A';
         }
 
         // -------- Zone B → Same State --------
-        if ($origin->state === $dest->state) {
+        if (strtolower($origin->state) === strtolower($dest->state)) {
             return 'B';
         }
 
         // -------- Zone C → Metro ↔ Metro --------
         if (
-            in_array($origin->city, $this->metroCities) &&
-            in_array($dest->city, $this->metroCities)
+            in_array(strtolower($origin->city), $this->metroCities) &&
+            in_array(strtolower($dest->city), $this->metroCities)
         ) {
             return 'C';
         }
 
         // -------- Zone E → Special States --------
         if (
-            in_array($origin->state, $this->specialStates) ||
-            in_array($dest->state, $this->specialStates)
+            in_array(strtolower($origin->state), $this->specialStates) ||
+            in_array(strtolower($dest->state), $this->specialStates)
         ) {
             return 'E';
         }
 
         // -------- Zone F → Remote Islands --------
         if (
-            in_array($origin->state, $this->remoteZones) ||
-            in_array($dest->state, $this->remoteZones)
+            in_array(strtolower($origin->state), $this->remoteZones) ||
+            in_array(strtolower($dest->state), $this->remoteZones)
         ) {
             return 'F';
         }       
