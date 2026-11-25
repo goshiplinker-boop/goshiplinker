@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\ShipmentInfo;
 use App\Models\Order;
 use App\Models\Courier;
+use App\Models\BuyerShippingLabelSetting;
 use App\Services\SellerWalletService;
 class AssignTrackingNumber extends Controller
 {
@@ -236,13 +237,20 @@ class AssignTrackingNumber extends Controller
         return $filename;
     }
     public function track($tracking_number,$courier_id,$company_id=0){
-        $company_id = (!empty($company_id))?$company_id:session('company_id');         
+        $company_id = (!empty($company_id))?$company_id:session('company_id');  
+        $parent_company_id = session('parent_company_id');         
         // Fetch the CourierSetting instance for the given courier_id
-        $courier_settings = CourierSetting::where('courier_id', $courier_id)
-            ->where('company_id', $company_id)
+        $courier_settings = CourierSetting::with('sellersCouriers')
             ->where('status', 1)
-            ->where('courier_code', '!=', 'selfship')
-            ->first();
+            ->where('company_id', $parent_company_id)
+            ->whereHas('sellersCouriers', function ($q) use ($company_id,$courier_id) {
+                $q->where('seller_courier_status', 1)
+                ->where('main_courier_status', 1)
+                ->where('company_id', $company_id) // seller's company
+                ->where('courier_id', $courier_id); // seller's courier
+            })
+        ->first();
+        
 
         // Check if the CourierSetting exists
         if (!$courier_settings) {
