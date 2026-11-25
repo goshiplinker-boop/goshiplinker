@@ -1158,7 +1158,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var courier_id = $(this).attr("courier_id");
 
         // Build URL dynamically
-        var url = "/admin/orders/track/" + tracking_number + "/" + courier_id;
+        var url = "/seller/orders/track/" + tracking_number + "/" + courier_id;
 
         $.get(url, function (response) {
             //console.log("GET request done");
