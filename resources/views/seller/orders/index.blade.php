@@ -80,12 +80,12 @@
                     Manifest <span class="badge bg-secondary rounded-pill">{{ $counts['manifested'] ?? '0' }}</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link {{ $tab === 'shipped' ? 'active' : '' }}"
                     href="{{ route('order_list', ['tab' => 'shipped','limit'=>$page_size]) }}">
                     Shipped <span class="badge bg-secondary rounded-pill">{{ $counts['shipped'] ?? '0' }}</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link {{ $tab === 'int' ? 'active' : '' }}"
                     href="{{ route('order_list', ['tab' => 'int','limit'=>$page_size]) }}">
