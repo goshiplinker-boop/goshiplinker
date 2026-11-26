@@ -238,7 +238,10 @@ class AssignTrackingNumber extends Controller
     }
     public function track($tracking_number,$courier_id,$company_id=0){
         $company_id = (!empty($company_id))?$company_id:session('company_id');  
-        $parent_company_id = session('parent_company_id');         
+        $parent_company_id = session('parent_company_id')??"";
+        if(empty($parent_company_id)){
+            $parent_company_id = DB::table('companies')->where('id', $company_id)->value('parent_id');
+        }
         // Fetch the CourierSetting instance for the given courier_id
         $courier_settings = CourierSetting::with('sellersCouriers')
             ->where('status', 1)

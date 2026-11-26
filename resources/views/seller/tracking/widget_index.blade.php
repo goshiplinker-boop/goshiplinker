@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Track Shipment</title>
+     <link rel="icon" type="image/png" sizes="512x512" href="{{ asset(env('PUBLIC_ASSETS') . '/images/favicon.png')}}" />
+    <link rel="apple-touch-icon" sizes="512x512" href="{{ asset(env('PUBLIC_ASSETS') . '/images/favicon.png')}}" />
     <link rel="stylesheet" href="{{ asset(env('PUBLIC_ASSETS') . '/vendor/bootstrap-icons/font/bootstrap-icons.css') }}">
     <link rel="preload" href="{{ asset(env('PUBLIC_ASSETS') . '/css/theme.min.css') }}" data-hs-appearance="default" as="style">
     <script>

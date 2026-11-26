@@ -31,6 +31,8 @@
   <meta name="twitter:image" content="{{ asset(env('PUBLIC_ASSETS') . '/images/logo/PM_Logo.png') }}">
   <meta name="robots" content="index, follow">
   <title>ParcelMind - Logistics Automation</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ asset(env('PUBLIC_ASSETS') . '/images/favicon.png')}}" />
+  <link rel="apple-touch-icon" sizes="512x512" href="{{ asset(env('PUBLIC_ASSETS') . '/images/favicon.png')}}" />
   <link rel="stylesheet" href="{{ asset(env('PUBLIC_ASSETS') . '/css/website-styles.css') }}">
   <link rel="canonical" href="{{ route('welcome') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">

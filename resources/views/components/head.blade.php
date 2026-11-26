@@ -13,6 +13,8 @@
       opacity: 0;
     }
   </style>
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ asset(env('PUBLIC_ASSETS') . '/images/favicon.png')}}" />
+  <link rel="apple-touch-icon" sizes="512x512" href="{{ asset(env('PUBLIC_ASSETS') . '/images/favicon.png')}}" />
   <link rel="stylesheet" href="{{ asset(env('PUBLIC_ASSETS') . '/vendor/bootstrap-icons/font/bootstrap-icons.css') }}">
   <link rel="stylesheet" href="{{ asset(env('PUBLIC_ASSETS') . '/vendor/daterangepicker/daterangepicker.css') }}">
   <link rel="stylesheet" href="{{ asset(env('PUBLIC_ASSETS') . '/vendor/tom-select/dist/css/tom-select.bootstrap5.css') }}">
