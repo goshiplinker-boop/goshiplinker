@@ -20,6 +20,32 @@ class SellerRateCardController extends Controller
         $first_seller_id = $sellers->first()->id ?? 0;
         //return $first_seller_id;
         $seller_company_id = ($role_id == 1)?($request->seller_company_id ?? $first_seller_id) : session('company_id');   
+        $rateCards = SellerRateCard::query()
+            ->select('seller_rate_card.*', 'couriers.*')
+            ->join('couriers', 'couriers.id', '=', 'seller_rate_card.courier_id')
+            ->whereHas('company', function ($q) use ($companyId) {
+                $q->where('parent_id', $companyId);
+            });
+
+        if ($seller_company_id > 0) {
+
+            $rateCards->join(
+                'sellers_couriers',
+                'sellers_couriers.courier_id',
+                '=',
+                'seller_rate_card.courier_id'
+            )
+            ->where('sellers_couriers.seller_courier_status', 1)
+            ->where('sellers_couriers.main_courier_status', 1)
+            ->where('seller_rate_card.company_id', $seller_company_id);
+
+        } 
+        $rateCards = $rateCards
+        ->orderBy('seller_rate_card.courier_id')
+        ->orderBy('seller_rate_card.zone_name')
+        ->orderBy('seller_rate_card.weight_slab_kg')
+        ->paginate(default_pagination_limit());
+        /*
         $rateCards = SellerRateCard::with('courier')
             ->whereHas('company', function ($q)use ($companyId) {
                 $q->where('parent_id', $companyId);                
@@ -31,6 +57,7 @@ class SellerRateCardController extends Controller
             ->orderBy('zone_name')
             ->orderBy('weight_slab_kg')
             ->paginate(default_pagination_limit());
+            */
         $sellers = Company::with('user')->where('parent_id', $companyId)->get();
         return view('admin.seller_rate_cards.index', compact('rateCards','sellers','seller_company_id'));
     }
