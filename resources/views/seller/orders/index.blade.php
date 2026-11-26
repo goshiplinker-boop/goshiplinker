@@ -85,17 +85,17 @@
                     href="{{ route('order_list', ['tab' => 'shipped','limit'=>$page_size]) }}">
                     Shipped <span class="badge bg-secondary rounded-pill">{{ $counts['shipped'] ?? '0' }}</span>
                 </a>
-            </li> -->
-             <li class="nav-item">
-                <a class="nav-link {{ $tab === 'ofd' ? 'active' : '' }}"
-                    href="{{ route('order_list', ['tab' => 'ofd','limit'=>$page_size]) }}">
-                    Out for Delivery <span class="badge bg-secondary rounded-pill">{{ $counts['ofd'] ?? '0' }}</span>
-                </a>
-            </li>
+            </li> -->            
             <li class="nav-item">
                 <a class="nav-link {{ $tab === 'int' ? 'active' : '' }}"
                     href="{{ route('order_list', ['tab' => 'int','limit'=>$page_size]) }}">
                     In-Transit <span class="badge bg-secondary rounded-pill">{{ $counts['int'] ?? '0' }}</span>
+                </a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link {{ $tab === 'ofd' ? 'active' : '' }}"
+                    href="{{ route('order_list', ['tab' => 'ofd','limit'=>$page_size]) }}">
+                    Out for Delivery <span class="badge bg-secondary rounded-pill">{{ $counts['ofd'] ?? '0' }}</span>
                 </a>
             </li>
             <li class="nav-item">
