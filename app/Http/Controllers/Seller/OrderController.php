@@ -202,6 +202,7 @@ class OrderController extends Controller
             "new" => ['o.status_code' => ['N']],
             "readytoship" => ['o.status_code' => ['P', 'M']],
             "shipped" => ['o.status_code' => ['S']],
+            "ofd" => ['si.current_status' => 'OFD'],
             "int" => ['si.current_status' => 'INT'],
             "del" => ['si.current_status' => 'DEL'],
             default => []
@@ -213,6 +214,7 @@ class OrderController extends Controller
             "new" => ['status_code' => ['N']],
             "readytoship" => ['status_code' => ['P', 'M']],
             "shipped" => ['status_code' => ['S']],
+            "ofd" => ['current_status' => 'OFD'],
             "int" => ['current_status' => 'INT'],
             "del" => ['current_status' => 'DEL'],
             default => []

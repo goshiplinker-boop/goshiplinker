@@ -86,6 +86,12 @@
                     Shipped <span class="badge bg-secondary rounded-pill">{{ $counts['shipped'] ?? '0' }}</span>
                 </a>
             </li> -->
+             <li class="nav-item">
+                <a class="nav-link {{ $tab === 'ofd' ? 'active' : '' }}"
+                    href="{{ route('order_list', ['tab' => 'ofd','limit'=>$page_size]) }}">
+                    Out for Delivery <span class="badge bg-secondary rounded-pill">{{ $counts['ofd'] ?? '0' }}</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link {{ $tab === 'int' ? 'active' : '' }}"
                     href="{{ route('order_list', ['tab' => 'int','limit'=>$page_size]) }}">
@@ -379,7 +385,7 @@
                             </button>
                             @endif
                             <meta name="csrf-token" content="{{ csrf_token() }}">
-                            @if($tab !='int' && $tab !='shipped')
+                            @if($tab !='int' && $tab !='ofd' && $tab !='shipped')
                             <div class="dropdown">
                                 <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100"
                                     id="usersExportDropdown" data-bs-toggle="dropdown" aria-expanded="false">

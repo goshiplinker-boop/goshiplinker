@@ -712,3 +712,4 @@
 #62 /var/www/goshiplinker/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(23): require_once('...')
 #63 {main}
 "} 
+[2026-11-26 13:59:32] local.INFO: []  
