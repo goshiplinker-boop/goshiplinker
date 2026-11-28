@@ -37,10 +37,12 @@ class SellerRateCardController extends Controller
             )
             ->where('sellers_couriers.seller_courier_status', 1)
             ->where('sellers_couriers.main_courier_status', 1)
+            ->where('seller_rate_card.status', 1)
             ->where('seller_rate_card.company_id', $seller_company_id);
 
         } 
         $rateCards = $rateCards
+        ->distinct()
         ->orderBy('seller_rate_card.courier_id')
         ->orderBy('seller_rate_card.zone_name')
         ->orderBy('seller_rate_card.weight_slab_kg')
