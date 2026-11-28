@@ -120,7 +120,8 @@ class OrderController extends Controller
             ->where('company_id', $parent_company_id)
             ->whereHas('sellersCouriers', function ($q) use ($companyId) {
                 $q->where('seller_courier_status', 1)
-                ->where('company_id', $companyId); // seller's company
+                ->where('main_courier_status', 1)
+                ->where('company_id', $companyId); 
             })
             ->get()
             ->keyBy('courier_id');
